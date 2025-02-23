@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Search Results for "{{ query }}"</h2>
+    
+    {% if employees %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Employees</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Employee No.</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>School</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employee in employees %}
+                        <tr>
+                            <td>{{ employee.employee_no }}</td>
+                            <td>{{ employee.family_name }}, {{ employee.given_name }}</td>
+                            <td>{{ employee.current_position or employee.original_position }}</td>
+                            <td>{{ employee.school.name }}</td>
+                            <td>
+                                <a href="{{ url_for('view_employee', id=employee.id) }}" class="btn btn-sm btn-info">View</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if schools %}
+    <div class="card">
+        <div class="card-header">
+            <h3>Schools</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>School ID</th>
+                            <th>Name</th>
+                            <th>Level</th>
+                            <th>District</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for school in schools %}
+                        <tr>
+                            <td>{{ school.school_id }}</td>
+                            <td>{{ school.name }}</td>
+                            <td>{{ school.level }}</td>
+                            <td>{{ school.district.name }}</td>
+                            <td>
+                                <a href="{{ url_for('view_school', id=school.id) }}" class="btn btn-sm btn-info">View</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if not employees and not schools %}
+    <div class="alert alert-info">
+        No results found.
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 
