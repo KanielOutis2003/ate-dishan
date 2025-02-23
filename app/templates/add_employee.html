@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Add Employee</h1>
+    <form method="POST" action="{{ url_for('main.add_employee') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.employee_no.label(class="form-label") }}
+            {{ form.employee_no(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.station_code.label(class="form-label") }}
+            {{ form.station_code(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.family_name.label(class="form-label") }}
+            {{ form.family_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.given_name.label(class="form-label") }}
+            {{ form.given_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.middle_name.label(class="form-label") }}
+            {{ form.middle_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="school_id" class="form-label">Select Existing School</label>
+            <select name="school_id" class="form-control" id="school_id">
+                <option value="">Select a School</option>
+                <option value="bohol_northeastern">BOHOL NORTHEASTERN EDUCATION FOUNDATION</option>
+                {% for school in schools %}
+                    <option value="{{ school.id }}">{{ school.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="new_school" class="form-label">Or Type New School Name</label>
+            <input type="text" name="new_school" class="form-control" placeholder="Enter new school name" id="new_school">
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %} 

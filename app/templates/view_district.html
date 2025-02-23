@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>District Details</h1>
+    <p><strong>Name:</strong> {{ district.name }}</p>
+    <a href="{{ url_for('main.edit_district', id=district.id) }}" class="btn btn-warning">Edit</a>
+    <a href="{{ url_for('main.districts') }}" class="btn btn-secondary">Back to Districts</a>
+</div>
+{% endblock %} 

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Dashboard</h1>
+
+    <h2>Employees</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employee No.</th>
+                <th>Full Name</th>
+                <th>Station Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.employee_no }}</td>
+                <td>{{ employee.family_name }}, {{ employee.given_name }}</td>
+                <td>{{ employee.station_code }}</td>
+                <td>
+                    <a href="{{ url_for('main.view_employee', id=employee.id) }}" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ url_for('main.edit_employee', id=employee.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Schools</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>School ID</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for school in schools %}
+            <tr>
+                <td>{{ school.school_id }}</td>
+                <td>{{ school.name }}</td>
+                <td>{{ school.level }}</td>
+                <td>
+                    <a href="{{ url_for('main.view_school', id=school.id) }}" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ url_for('main.edit_school', id=school.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Districts</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for district in districts %}
+            <tr>
+                <td>{{ district.name }}</td>
+                <td>
+                    <a href="{{ url_for('main.view_district', id=district.id) }}" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ url_for('main.edit_district', id=district.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} 

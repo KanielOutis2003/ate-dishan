@@ -4,7 +4,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Districts</h1>
-        <a href="{{ url_for('add_district') }}" class="btn btn-primary">Add District</a>
+        <a href="{{ url_for('main.add_district') }}" class="btn btn-primary">Add District</a>
     </div>
     
     <div class="card">
@@ -24,8 +24,8 @@
                             <td>{{ district.name }}</td>
                             <td>{{ district.schools|length }}</td>
                             <td>
-                                <a href="{{ url_for('view_district', id=district.id) }}" class="btn btn-sm btn-info">View</a>
-                                <a href="{{ url_for('edit_district', id=district.id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url_for('main.view_district', id=district.id) }}" class="btn btn-sm btn-info">View</a>
+                                <a href="{{ url_for('main.edit_district', id=district.id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <button class="btn btn-sm btn-danger" onclick="deleteDistrict({{ district.id }})">Delete</button>
                             </td>
                         </tr>

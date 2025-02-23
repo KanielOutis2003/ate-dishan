@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Employee Details</h1>
+    <p><strong>Employee No:</strong> {{ employee.employee_no }}</p>
+    <p><strong>Name:</strong> {{ employee.family_name }}, {{ employee.given_name }}</p>
+    <p><strong>Station Code:</strong> {{ employee.station_code }}</p>
+    <p><strong>Current Position:</strong> {{ employee.current_position }}</p>
+    <p><strong>School:</strong> {{ employee.school.name }}</p>
+    <a href="{{ url_for('main.edit_employee', id=employee.id) }}" class="btn btn-warning">Edit</a>
+    <a href="{{ url_for('main.employees') }}" class="btn btn-secondary">Back to Employees</a>
+</div>
+{% endblock %} 

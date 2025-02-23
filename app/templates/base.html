@@ -36,23 +36,26 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('home') }}">School System</a>
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">School System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('employees') }}">Employees</a>
+                        <a class="nav-link" href="{{ url_for('main.employees') }}">Employees</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('schools') }}">Schools</a>
+                        <a class="nav-link" href="{{ url_for('main.schools') }}">Schools</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('districts') }}">Districts</a>
+                        <a class="nav-link" href="{{ url_for('main.districts') }}">Districts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.dashboard') }}">Dashboard</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-auto" action="{{ url_for('search') }}" method="get">
+                <form class="d-flex ms-auto" action="{{ url_for('main.search') }}" method="get">
                     <input class="form-control me-2" type="search" placeholder="Search..." name="q" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
